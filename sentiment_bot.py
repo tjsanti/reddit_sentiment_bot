@@ -47,7 +47,12 @@ for message in messages:
     flag = True
     # only process mentions
     if username in message.body:
-        process(message)
+        try:
+            process(message)
+        except AttributeError:
+            print('Parent comment was deleted.')
+            message.mark_read()
+            message.delete()
     else:
         message.mark_read()
         message.delete()
