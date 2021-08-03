@@ -25,4 +25,4 @@ Once it collects these comments from the parent comment's author, the bot proces
 - [ ] Separate sentiment analyses of the parent comment from the rest of that user's comments used in averaging. Report both scores for reference.
 - [ ] Add more positive and negative replies for the bot to choose from
 - [ ] Add reporting of median sentiment (possibly replace average)
-- [ ] Fix bounds for positive/negative/neutral sentiments to be in line with VADER
+- [x] Fix bounds for positive/negative/neutral sentiments to be in line with VADER

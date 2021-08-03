@@ -48,9 +48,9 @@ def reply(mention, parent_author, avg_score, num_comments):
 
     score_report = f'\n\nTheir last {num_comments} comments had an average sentiment of {avg_score:.3f}.'
 
-    if avg_score >= 0.15:
+    if avg_score >= 0.05:
         score_report += ' (Pretty Positive)' + '\n'*4
-    elif avg_score >= -0.15:
+    elif avg_score > -0.05:
         score_report += ' (Mostly Neutral)' + '\n'*4
     else:
         score_report += ' (Pretty Negative)' + '\n'*4
