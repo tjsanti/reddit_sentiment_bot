@@ -2,7 +2,7 @@
 
 This repo contains the code behind my Reddit bot, /u/bad_day_checker. This project was created to explore the Reddit API and the `vaderSentiment` package in Python. The idea was to have a bot that one could call to get a report on whether another individual on Reddit is always negative or they may just be having a bad day. Here is an example:
 
-[img](link)
+![img](bot_screenshot.png)
 
 ### How it works
 
@@ -26,3 +26,4 @@ Once it collects these comments from the parent comment's author, the bot proces
 - [ ] Add more positive and negative replies for the bot to choose from
 - [ ] Add reporting of median sentiment (possibly replace average)
 - [x] Fix bounds for positive/negative/neutral sentiments to be in line with VADER
+- [ ] Add support for forwarding direct messages that are not mentions to creator's account
