@@ -1,8 +1,8 @@
 import json
-import time
 import sys
 
 import praw
+from prawcore.exceptions import Forbidden
 
 from bot_funcs import fetch_comments, process_comments, reply
 
@@ -39,23 +39,19 @@ def process(mention):
     avg_score = process_comments(comments, num_comments)
     reply(mention, parent_author, avg_score, num_comments)
 
+
 # get 10 most recent messages
-messages = reddit.inbox.unread(limit=10)
+mentions = list(reddit.inbox.unread(limit=10))
 
-flag = False
-for message in messages:
-    flag = True
-    # only process mentions
-    if username in message.body:
-        try:
-            process(message)
-        except AttributeError:
-            print('Parent comment was deleted.')
-            message.mark_read()
-            message.delete()
-    else:
-        message.mark_read()
-        message.delete()
+if len(mentions) > 0:
+    for mention in mentions:
+        print(mention.body)
+        if username in mention.body:
+            try:
+                process(mention)
+            except (AttributeError, Forbidden):
+                print('Something went wrong with comment id:', mention.id)
 
-if not flag:
+    reddit.inbox.mark_read(mentions)
+else:
     print('No new comments.')

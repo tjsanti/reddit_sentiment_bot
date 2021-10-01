@@ -60,6 +60,6 @@ def reply(mention, parent_author, avg_score, num_comments):
     reply_comment = opener + score_report + signature
     mention.reply(reply_comment)
     mention.delete()
-    print('Mention replied to and deleted')
+    print('Mention replied to')
 
     return
